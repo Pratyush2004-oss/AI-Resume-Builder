@@ -26,7 +26,7 @@ const PersonalDetailPreview = ({ resumeInfo }) => {
                 style={{
                     borderColor: resumeInfo.themeColor
                 }}
-            />s
+            />
         </div>
     )
 }
