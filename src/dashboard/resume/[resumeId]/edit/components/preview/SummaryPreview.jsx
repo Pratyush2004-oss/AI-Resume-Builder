@@ -1,8 +1,10 @@
 import React from 'react'
 
-const SummaryPreview = () => {
-  return (
-    <div>SummaryPreview</div>
+const SummaryPreview = ({ resumeInfo }) => {
+  return resumeInfo && (
+    <p className='text-xs text-justify'>
+      {resumeInfo.summery}
+    </p>
   )
 }
 
