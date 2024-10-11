@@ -18,7 +18,7 @@ const EducationalPreview = ({ resumeInfo }) => {
                     }}
                     className='text-sm font-bold'>{edu.universityName}</h2>
                     <h2 className='flex justify-between text-xs'>{edu.degree} in {edu.major}
-                        <span>{edu.startDate} - {edu.endDate}</span>
+                        <span className='font-semibold'>{edu.startDate} <span className='font-light'>To</span> {edu.endDate}</span>
                     </h2>
                     <p className='my-2 text-xs text-justify'>{edu.description}</p>
                 </div>

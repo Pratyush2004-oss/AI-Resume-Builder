@@ -3,6 +3,12 @@ import { Input } from '@/components/ui/input'
 import React, { useContext, useEffect, useState } from 'react'
 import RichTextEdtor from '../RichTextEdtor'
 import { ResumeInfoContext } from '@/context/ResumeInfoContext'
+import { db } from '../../../../../../../config/index'
+import { Resume } from '../../../../../../../config/schema'
+import { and, eq } from 'drizzle-orm'
+import { useUser } from '@clerk/clerk-react'
+import { toast } from 'react-toastify'
+import { Loader2 } from 'lucide-react'
 
 const formFields = {
   title: '',
@@ -13,13 +19,14 @@ const formFields = {
   endDate: '',
   workSummary: '',
   currentlyWorking: ''
-
 }
 const Professional = ({ enabledNext, resumeId }) => {
-  const {resumeInfo,setResumeInfo} = useContext(ResumeInfoContext)
+  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
   const [experienceList, setExperienceList] = useState([
     formFields
   ])
+  const [loading, setLoading] = useState(false);
+  const { user } = useUser();
 
   const handlechange = (index, event) => {
     const newEntries = experienceList.slice();
@@ -40,14 +47,37 @@ const Professional = ({ enabledNext, resumeId }) => {
     const newEntries = experienceList.slice();
     newEntries[index][name] = event.target.value;
     setExperienceList(newEntries);
-    
   }
-  useEffect(()=>{
+
+  const Save = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const response = await db.update(Resume).set({
+        experience: resumeInfo.experience
+      }).where(and(eq(Resume.createdBy, user.primaryEmailAddress.emailAddress), eq(Resume.resumeId, resumeId)))
+
+      if (response) {
+        toast.success("Experience Updated Successfully");
+        enabledNext(true);
+        setLoading(false);
+      }
+    } catch (error) {
+      toast.error("Error Updating Professional Experience")
+    }
+    finally {
+      setLoading(false)
+    }
+  }
+  
+  useEffect(() => {
+    enabledNext(false);
     resumeInfo && setResumeInfo({
       ...resumeInfo,
-      experience:experienceList
+      experience: experienceList
     })
-  },[experienceList])
+  }, [experienceList])
+  
   return (
     <div>
       <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
@@ -55,7 +85,7 @@ const Professional = ({ enabledNext, resumeId }) => {
         <p>Add your previous job Experience</p>
         <div>
           {experienceList.map((item, idx) => (
-            <div>
+            <div key={idx}>
               <div className='grid grid-cols-2 gap-3 p-3 my-5 border rounded-lg'>
                 <div>
                   <label className='text-xs'>Position Title</label>
@@ -82,8 +112,7 @@ const Professional = ({ enabledNext, resumeId }) => {
                   <Input type='date' name='endDate' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div className='col-span-2'>
-                  <label className='text-xs'>Work Summary</label>
-                  <RichTextEdtor onRichTextEditorChange={(event)=>handleRichTextEditor(event, "workSummary", idx)} />
+                  <RichTextEdtor index={idx} onRichTextEditorChange={(event) => handleRichTextEditor(event, "workSummary", idx)} />
                 </div>
               </div>
             </div>
@@ -96,7 +125,7 @@ const Professional = ({ enabledNext, resumeId }) => {
                 <Button variant='destructive' onClick={RemoveExperience}> - Remove</Button>
               }
             </div>
-            <Button>Save</Button>
+            <Button onClick={Save}> {loading ? <Loader2 className='animate-spin text-primary'/> :'Save'}</Button>
           </div>
         </div>
       </div>

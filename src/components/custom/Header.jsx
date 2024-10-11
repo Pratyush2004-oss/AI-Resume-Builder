@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 const Header = () => {
     const { user, isSignedIn } = useUser();
     return (
-        <div className='p-3 px-5 flex items-center justify-between shadow-md rounded-md'>
-            <Link to={'/'} className='flex-col flex'>
+        <div className='flex items-center justify-between p-3 px-5 rounded-md shadow-md'>
+            <Link to={'/'} className='flex items-center gap-1'>
                 <h1 className='text-2xl font-bold text-purple-600'>Resume</h1>
                 <h1 className='text-xl font-bold'>Builder</h1>
             </Link>
