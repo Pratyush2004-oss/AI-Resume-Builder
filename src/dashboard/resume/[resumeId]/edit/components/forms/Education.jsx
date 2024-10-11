@@ -23,7 +23,7 @@ const Education = ({ resumeId, enabledNext }) => {
   const { user } = useUser();
   const [educationList, setEducationList] = useState([
     formFields
-  ])
+  ]);
   const [loading, setLoading] = useState(false);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
   const handleChange = (e, idx) => {
@@ -46,7 +46,7 @@ const Education = ({ resumeId, enabledNext }) => {
     setLoading(true);
     try {
       const response = await db.update(Resume).set({
-        education: resumeInfo.education
+        education: JSON.stringify(resumeInfo.education)
       }).where(and(eq(Resume.createdBy, user.primaryEmailAddress.emailAddress), eq(Resume.resumeId, resumeId)))
       if(response){
         toast("Educational Info Upated Successfully");

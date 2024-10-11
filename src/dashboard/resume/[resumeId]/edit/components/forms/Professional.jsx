@@ -54,7 +54,7 @@ const Professional = ({ enabledNext, resumeId }) => {
     setLoading(true);
     try {
       const response = await db.update(Resume).set({
-        experience: resumeInfo.experience
+        experience: JSON.stringify(resumeInfo.experience)
       }).where(and(eq(Resume.createdBy, user.primaryEmailAddress.emailAddress), eq(Resume.resumeId, resumeId)))
 
       if (response) {
