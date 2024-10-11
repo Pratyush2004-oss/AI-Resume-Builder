@@ -40,7 +40,7 @@ const FormSection = ({ resumeId }) => {
       {/* Summary */}
       {
         activeFormIndex === 2 &&
-        <Summary />
+        <Summary enabledNext={(v) => setEnableNext(v)} resumeId={resumeId}  />
       }
 
       {/* Education */}

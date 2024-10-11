@@ -21,7 +21,7 @@ const ProfessionalPreview = ({ resumeInfo }) => {
                         <span>{exp.startDate} - {exp.currentlyWorking ? 'Present' : exp.endDate}</span>
                     </h2>
                     <p className='my-2 text-xs text-justify'>
-                        {exp.workSummery}
+                        {exp.workSummary}
                     </p>
                 </div>
             ))}

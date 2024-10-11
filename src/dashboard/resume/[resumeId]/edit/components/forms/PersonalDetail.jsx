@@ -7,6 +7,7 @@ import React, { useContext, useState } from 'react'
 import { and, eq } from 'drizzle-orm';
 import { useUser } from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
+import { Loader2 } from 'lucide-react';
 
 const PersonalDetail = ({ enabledNext, resumeId }) => {
     const { user } = useUser();
@@ -21,7 +22,6 @@ const PersonalDetail = ({ enabledNext, resumeId }) => {
             ...resumeInfo,
             [name]: value
         })
-
     }
 
     const onSave = async (e) => {
@@ -38,12 +38,12 @@ const PersonalDetail = ({ enabledNext, resumeId }) => {
             }).where(and(eq(Resume.createdBy, user.primaryEmailAddress.emailAddress), eq(Resume.resumeId, resumeId)))
 
             if (response) {
-                toast("Data Saved Successfully");
+                toast("Personal details Saved Successfully");
                 setLoading(false);
                 enabledNext(true);
             }
         } catch (error) {
-            toast.error("Error saving the information");
+            toast.error("Error saving personal information");
         }
         finally {
             setLoading(false);
@@ -82,7 +82,9 @@ const PersonalDetail = ({ enabledNext, resumeId }) => {
                         <Input placeholder='Ex. abc@example.com' type='email' required name='email' onChange={handleInputChange} />
                     </div>
                 </div>
-                <Button className='' type='submit'>{'Save'}</Button>
+                <div className='flex justify-end'>
+                <Button className='' type='submit'>{loading ? <Loader2 className='animate-spin'/> : 'Save'}</Button>
+                </div>
             </form>
         </div>
     )

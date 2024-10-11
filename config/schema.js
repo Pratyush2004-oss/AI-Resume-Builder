@@ -13,5 +13,6 @@ export const Resume = pgTable('AI-Resume',
         phone: varchar('phone'),
         email: varchar('email'),
         jobTitle: varchar('jobTitle'),
+        summary: varchar('summary'),
     }
 )
