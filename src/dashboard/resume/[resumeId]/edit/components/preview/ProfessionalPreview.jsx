@@ -17,12 +17,10 @@ const ProfessionalPreview = ({ resumeInfo }) => {
                         color: resumeInfo.themeColor
                     }}
                         className='text-sm font-bold'>{exp.title}</h2>
-                    <h2 className='flex justify-between text-xs'>{exp.companyName}, {exp.city} , {exp.state}
-                        <span>{exp.startDate} - {exp.currentlyWorking ? 'Present' : exp.endDate}</span>
+                    <h2 className='flex justify-between text-xs '>{exp.companyName}, {exp.city} , {exp.state}
+                        <span className='font-semibold'>{exp.startDate} <span className='font-light'>to</span> {exp.currentlyWorking ? 'Present' : exp.endDate}</span>
                     </h2>
-                    <p className='my-2 text-xs text-justify'>
-                        {exp.workSummary}
-                    </p>
+                    <div className='my-2 text-xs text-justify' dangerouslySetInnerHTML={{__html:exp.workSummary}}/>
                 </div>
             ))}
         </div>

@@ -46,21 +46,21 @@ const FormSection = ({ resumeId }) => {
       {/* Education */}
       {
         activeFormIndex === 3 &&
-        <Professional />
+        <Professional enabledNext={(v) => setEnableNext(v)} resumeId={resumeId}  />
       }
 
 
       {/* Professional */}
       {
         activeFormIndex === 4 &&
-        <Education />
+        <Education enabledNext={(v) => setEnableNext(v)} resumeId={resumeId} />
       }
 
 
       {/* Skills */}
       {
         activeFormIndex === 5 &&
-        <Skills />
+        <Skills resumeId={resumeId} />
       }
 
 
