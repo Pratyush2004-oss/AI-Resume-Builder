@@ -22,7 +22,7 @@ const Skills = ({ resumeId }) => {
   ])
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
-  const { resumeInfo, setResumeInfo } = useCkontext(ResumeInfoContext);
+  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
   const addNewSkill = () => {
     setSkillsList([...skillsList, {

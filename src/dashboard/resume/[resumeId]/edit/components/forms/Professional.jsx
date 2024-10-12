@@ -69,7 +69,7 @@ const Professional = ({ enabledNext, resumeId }) => {
       setLoading(false)
     }
   }
-  
+
   useEffect(() => {
     enabledNext(false);
     resumeInfo && setResumeInfo({
@@ -77,7 +77,7 @@ const Professional = ({ enabledNext, resumeId }) => {
       experience: experienceList
     })
   }, [experienceList])
-  
+
   return (
     <div>
       <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
@@ -125,7 +125,7 @@ const Professional = ({ enabledNext, resumeId }) => {
                 <Button variant='destructive' onClick={RemoveExperience}> - Remove</Button>
               }
             </div>
-            <Button onClick={Save}> {loading ? <Loader2 className='animate-spin text-primary'/> :'Save'}</Button>
+            <Button onClick={Save}> {loading ? <Loader2 className='animate-spin text-primary' /> : 'Save'}</Button>
           </div>
         </div>
       </div>

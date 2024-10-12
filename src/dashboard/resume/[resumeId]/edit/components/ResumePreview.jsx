@@ -7,7 +7,7 @@ import EducationalPreview from './preview/EducationalPreview';
 import SkillsPreview from './preview/SkillsPreview';
 
 const ResumePreview = () => {
-    const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
+    const { resumeInfo } = useContext(ResumeInfoContext);
     return resumeInfo && (
         <div className='shadow-lg h-full p-14 border-t-[20px]'
             style={{
@@ -21,14 +21,13 @@ const ResumePreview = () => {
             <SummaryPreview resumeInfo={resumeInfo} />
 
             {/* Professional Experience */}
-            <ProfessionalPreview resumeInfo={resumeInfo}/>
-            
-            {/* Educational */}
-            <EducationalPreview resumeInfo={resumeInfo}/>
-            
-            {/* Skills */}
-            <SkillsPreview resumeInfo={resumeInfo}/>
+            <ProfessionalPreview resumeInfo={resumeInfo} />
 
+            {/* Educational */}
+            <EducationalPreview resumeInfo={resumeInfo} />
+
+            {/* Skills */}
+            <SkillsPreview resumeInfo={resumeInfo} />
 
         </div>
     )

@@ -22,9 +22,9 @@ const Dashboard = () => {
     }, [user])
     return (
         <div className='p-10 md:px-20 lg:mx-32'>
-            <h2 className='font-bold text-2xl'>My Resume</h2>
+            <h2 className='text-2xl font-bold'>My Resume</h2>
             <p>Start Creating AI resime to your next Job Role </p>
-            <div className='grid grid-cols-2 md:grid-cols-3 mt-10 gap-5'>
+            <div className='grid grid-cols-2 gap-5 mt-10 md:grid-cols-3'>
                 <AddNewResume />
                 {UserResemes.length > 0 && UserResemes.map((resume, idx) => (
                     <ResumeCard key={idx} resume={resume} />
