@@ -48,7 +48,7 @@ const Education = ({ resumeId, enabledNext }) => {
       const response = await db.update(Resume).set({
         education: JSON.stringify(resumeInfo.education)
       }).where(and(eq(Resume.createdBy, user.primaryEmailAddress.emailAddress), eq(Resume.resumeId, resumeId)))
-      if(response){
+      if (response) {
         toast("Educational Info Upated Successfully");
         setLoading(false)
         enabledNext(true);
@@ -71,7 +71,11 @@ const Education = ({ resumeId, enabledNext }) => {
     })
   }, [educationList])
 
-  return (
+  useEffect(() => {
+    JSON.parse(resumeInfo?.education).length > 0 && setEducationList(JSON.parse(resumeInfo?.education))
+  }, [])
+
+  return resumeInfo && (
     <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
       <h2 className='text-xl font-bold'>Education</h2>
       <p>Add your Educational Details</p>
@@ -81,27 +85,27 @@ const Education = ({ resumeId, enabledNext }) => {
             <div className='grid grid-cols-2 gap-5 p-3 my-5 border rounded-lg shadow-lg'>
               <div className='col-span-2 gap-1 my-2'>
                 <label className='text-sm font-semibold'>University Name</label>
-                <Input name='universityName' onChange={(e) => handleChange(e, idx)} />
+                <Input defaultValue={item.universityName} name='universityName' onChange={(e) => handleChange(e, idx)} />
               </div>
               <div className='gap-1 my-2'>
                 <label className='text-sm font-semibold'>Degree</label>
-                <Input name='degree' onChange={(e) => handleChange(e, idx)} />
+                <Input defaultValue={item.degree} name='degree' onChange={(e) => handleChange(e, idx)} />
               </div>
               <div className='gap-1 my-2'>
                 <label className='text-sm font-semibold'>Major</label>
-                <Input name='major' onChange={(e) => handleChange(e, idx)} />
+                <Input defaultValue={item.major} name='major' onChange={(e) => handleChange(e, idx)} />
               </div>
               <div className='gap-1 my-2'>
                 <label className='text-sm font-semibold'>Start Date</label>
-                <Input name='startDate' type='date' onChange={(e) => handleChange(e, idx)} />
+                <Input defaultValue={item.startDate} name='startDate' type='date' onChange={(e) => handleChange(e, idx)} />
               </div>
               <div className='gap-1 my-2'>
                 <label className='text-sm font-semibold'>End Date</label>
-                <Input name='endDate' type='date' onChange={(e) => handleChange(e, idx)} />
+                <Input defaultValue={item.endDate} name='endDate' type='date' onChange={(e) => handleChange(e, idx)} />
               </div>
               <div className='col-span-2 gap-1 my-2'>
                 <label className='text-sm font-semibold'>Description</label>
-                <Textarea name='description' onChange={(e) => handleChange(e, idx)} />
+                <Textarea defaultValue={item.description} name='description' onChange={(e) => handleChange(e, idx)} />
               </div>
             </div>
           </div>

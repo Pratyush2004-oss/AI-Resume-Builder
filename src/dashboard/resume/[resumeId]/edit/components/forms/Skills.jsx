@@ -68,7 +68,11 @@ const Skills = ({ resumeId }) => {
     })
   }, [skillsList])
 
-  return (
+  useEffect(() => {
+    JSON.parse(resumeInfo?.skills).length > 0 && setSkillsList(JSON.parse(resumeInfo?.skills))
+  }, [])
+
+  return resumeInfo && (
     <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
       <h2 className='text-xl font-bold'>Skills</h2>
       <p>Add Your top professional Skills</p>
@@ -78,9 +82,9 @@ const Skills = ({ resumeId }) => {
           <div key={idx} className='flex items-stretch justify-between gap-3 p-3 my-3 border rounded-lg shadow-lg'>
             <div>
               <label className='text-xs font-semibold'>Name</label>
-              <Input onChange={(e) => handleChange(idx, 'name', e.target.value)} />
+              <Input defaultValue={item.name} onChange={(e) => handleChange(idx, 'name', e.target.value)} />
             </div>
-            <Rating style={{ maxWidth: 150 }} value={item.rating} onChange={(v) => handleChange(idx, 'rating', v)} />
+            <Rating style={{ maxWidth: 150 }} defaultValue={item.rating} value={item.rating} onChange={(v) => handleChange(idx, 'rating', v)} />
           </div>
         ))}
       </div>

@@ -78,7 +78,11 @@ const Professional = ({ enabledNext, resumeId }) => {
     })
   }, [experienceList])
 
-  return (
+  useEffect(() => {
+    JSON.parse(resumeInfo?.experience).length > 0 && setExperienceList(JSON.parse(resumeInfo?.experience))
+  }, [])
+
+  return resumeInfo && (
     <div>
       <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
         <h2 className='text-xl font-bold'>Professional Experience</h2>
@@ -89,30 +93,30 @@ const Professional = ({ enabledNext, resumeId }) => {
               <div className='grid grid-cols-2 gap-3 p-3 my-5 border rounded-lg'>
                 <div>
                   <label className='text-xs'>Position Title</label>
-                  <Input name='title' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.title} name='title' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div>
                   <label className='text-xs'>Company Name</label>
-                  <Input name='companyName' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.companyName} name='companyName' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div>
                   <label className='text-xs'>City</label>
-                  <Input name='city' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.city} name='city' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div>
                   <label className='text-xs'>State</label>
-                  <Input name='state' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.state} name='state' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div>
                   <label className='text-xs'>Start Date</label>
-                  <Input type='date' name='startDate' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.startDate} type='date' name='startDate' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div>
                   <label className='text-xs'>End Date</label>
-                  <Input type='date' name='endDate' onChange={(e) => handlechange(idx, e)} />
+                  <Input defaultValue={item.endDate} type='date' name='endDate' onChange={(e) => handlechange(idx, e)} />
                 </div>
                 <div className='col-span-2'>
-                  <RichTextEdtor index={idx} onRichTextEditorChange={(event) => handleRichTextEditor(event, "workSummary", idx)} />
+                  <RichTextEdtor defaultValue={item.workSummary} index={idx} onRichTextEditorChange={(event) => handleRichTextEditor(event, "workSummary", idx)} />
                 </div>
               </div>
             </div>

@@ -66,7 +66,7 @@ const Summary = ({ enabledNext, resumeId }) => {
     }
   }
 
-  return (
+  return resumeInfo && (
     <div>
       <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
         <h2 className='text-xl font-bold'>Summary</h2>
@@ -78,7 +78,7 @@ const Summary = ({ enabledNext, resumeId }) => {
         </div>
 
         <form className='my-7' onSubmit={onSave}>
-          <Textarea className='mt-5' placeholder='Enter Summary' value={summary} required onChange={(e) => setSummary(e.target.value)} />
+          <Textarea defaultValue={resumeInfo.summary} className='mt-5' placeholder='Enter Summary' value={summary} required onChange={(e) => setSummary(e.target.value)} />
           <div className='flex justify-end mt-2'>
             <Button>{loading ? <Loader2 className='animate-spin ' /> : 'Save'}</Button>
           </div>

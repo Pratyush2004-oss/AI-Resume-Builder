@@ -5,11 +5,10 @@ import { Brain, Loader2 } from 'lucide-react';
 import React, { useContext, useState } from 'react'
 import { BtnBold, BtnBulletList, BtnItalic, BtnLink, BtnNumberedList, BtnStrikeThrough, BtnUnderline, Editor, EditorProvider, Separator, Toolbar } from 'react-simple-wysiwyg'
 import { toast } from 'react-toastify';
-const RichTextEdtor = ({ onRichTextEditorChange, index }) => {
+const RichTextEdtor = ({ onRichTextEditorChange, index, defaultValue }) => {
     const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext)
-    const [value, setValue] = useState();
-    const [loading, setLoading] = useState(false);
-    const [aiLoading,setAiLoading] = useState(false)
+    const [value, setValue] = useState(defaultValue);
+    const [aiLoading, setAiLoading] = useState(false)
 
     const GenerateSummaryFromAI = async () => {
         setAiLoading(true)
