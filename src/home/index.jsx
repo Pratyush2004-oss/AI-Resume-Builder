@@ -1,5 +1,4 @@
 import Header from '@/components/custom/Header'
-import { UserButton } from '@clerk/clerk-react'
 import { AtomIcon, Edit, Share2 } from 'lucide-react'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -9,9 +8,6 @@ function Home() {
     <div>
       <Header />
       <div>
-        {/* <img src={'/grid.svg'} className="absolute z-[-10] w-full" 
-      width={1200} height={300} /> */}
-        {/* <Header/> */}
         <section className="z-50 ">
           <div className="max-w-screen-xl px-4 py-8 mx-auto text-center lg:py-16 lg:px-12">
             <a href="#" className="inline-flex items-center justify-between px-1 py-1 pr-4 text-sm text-gray-700 bg-gray-100 rounded-full mb-7 dark:bg-gray-800 dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700" role="alert">
