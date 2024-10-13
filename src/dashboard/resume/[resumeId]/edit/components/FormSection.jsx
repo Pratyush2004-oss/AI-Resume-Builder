@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import PersonalDetail from './forms/PersonalDetail'
 import { Button } from '@/components/ui/button'
-import { ArrowLeft, ArrowRight, LayoutGrid } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import Summary from './forms/Summary'
 import Professional from './forms/Professional'
 import Education from './forms/Education'
 import Skills from './forms/Skills'
 import { Link } from 'react-router-dom'
+import ThemeColor from './ThemeColor'
 
 const FormSection = ({ resumeId }) => {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
@@ -15,7 +16,7 @@ const FormSection = ({ resumeId }) => {
     <div>
 
       <div className='flex items-center justify-between'>
-        <Button className='gap-2' size='sm'><LayoutGrid className='size-4' />Theme</Button>
+        <ThemeColor resumeId={resumeId} />
         <div>{activeFormIndex}/5</div>
         <div className='flex items-center gap-2'>
           {

@@ -70,7 +70,7 @@ const Summary = ({ enabledNext, resumeId }) => {
     <div>
       <div className='p-5 mt-10 border-t-4 rounded-lg shadow-lg border-t-primary'>
         <h2 className='text-xl font-bold'>Summary</h2>
-        <p>Add Summary for your Job Title</p>
+        <span>Add Summary for your Job Title</span>
 
         <div className='flex items-center justify-between my-3'>
           <label className='font-semibold'>Add Summary</label>

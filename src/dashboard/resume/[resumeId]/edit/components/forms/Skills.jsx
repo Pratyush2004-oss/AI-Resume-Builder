@@ -70,7 +70,7 @@ const Skills = ({ resumeId, enabledNext }) => {
     })
   }, [skillsList])
 
-  useEffect(() => {
+  useEffect(() => { resumeInfo.skills &&
     JSON.parse(resumeInfo?.skills).length > 0 && setSkillsList(JSON.parse(resumeInfo?.skills))
   }, [])
 

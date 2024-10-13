@@ -59,7 +59,7 @@ const AddNewResume = () => {
                     <DialogHeader>
                         <DialogTitle>Create New Resume</DialogTitle>
                         <DialogDescription>
-                            <p>Add Title for your new Resume</p>
+                            <span>Add Title for your new Resume</span>
                             <Input className='my-2'
                                 onChange={(e) => setResumeTitle(e.target.value)}
                                 placeholder='Ex. Full-Stack Resume' />

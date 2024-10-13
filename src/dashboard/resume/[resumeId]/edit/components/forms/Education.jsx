@@ -71,7 +71,7 @@ const Education = ({ resumeId, enabledNext }) => {
     })
   }, [educationList])
 
-  useEffect(() => {
+  useEffect(() => { resumeInfo.education &&
     JSON.parse(resumeInfo?.education).length > 0 && setEducationList(JSON.parse(resumeInfo?.education))
   }, [])
 

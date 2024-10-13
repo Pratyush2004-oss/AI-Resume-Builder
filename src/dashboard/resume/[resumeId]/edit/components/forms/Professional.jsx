@@ -79,7 +79,7 @@ const Professional = ({ enabledNext, resumeId }) => {
   }, [experienceList])
 
   useEffect(() => {
-    JSON.parse(resumeInfo?.experience).length > 0 && setExperienceList(JSON.parse(resumeInfo?.experience))
+    resumeInfo.experience && JSON.parse(resumeInfo?.experience).length > 0 && setExperienceList(JSON.parse(resumeInfo?.experience))
   }, [])
 
   return resumeInfo && (
