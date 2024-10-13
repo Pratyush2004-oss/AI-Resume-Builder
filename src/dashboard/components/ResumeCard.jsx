@@ -12,6 +12,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
+import Logo from '/public/cv.svg'
 import { Button } from '@/components/ui/button'
 const ResumeCard = ({ resume, refreshData }) => {
     const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ const ResumeCard = ({ resume, refreshData }) => {
                     color: resume.themeColor
                 }}
             >{resume.title}</h1>
-            <img src='/public/cv.png' className='mx-auto rounded-lg size-28' />
+            <img src={Logo} className='mx-auto rounded-lg size-28' />
             <div className='flex justify-end gap-4'>
                 <Link to={`/dashboard/resume/${resume.resumeId}/edit`}><Edit className='p-0.5 text-white bg-purple-500 rounded-md' /></Link>
                 <Link to={`/my-resume/${resume.resumeId}/view`}><Download className='text-white bg-black rounded-md cursor-pointer p-0.5' /></Link>
