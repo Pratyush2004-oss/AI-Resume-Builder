@@ -5,7 +5,6 @@ import { db } from '../../config/index';
 import { Resume } from '../../config/schema';
 import { desc, eq } from 'drizzle-orm';
 import ResumeCard from './components/ResumeCard';
-import { User } from 'lucide-react';
 
 const Dashboard = () => {
     const { user } = useUser();
