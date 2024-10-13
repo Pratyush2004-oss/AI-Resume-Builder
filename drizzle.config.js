@@ -5,6 +5,6 @@ export default defineConfig({
     out: './drizzle',
     dialect: 'postgresql',
     dbCredentials: {
-        url: 'postgresql://neondb_owner:JjXVaRv26PKB@ep-jolly-bread-a5hdf74l.us-east-2.aws.neon.tech/AI-Resume?sslmode=require',
+        url: import.meta.env.VITE_PUBLIC_DATABASE_URL_CONFIG,
     }
 })
