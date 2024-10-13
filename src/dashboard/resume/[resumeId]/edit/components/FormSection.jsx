@@ -6,10 +6,11 @@ import Summary from './forms/Summary'
 import Professional from './forms/Professional'
 import Education from './forms/Education'
 import Skills from './forms/Skills'
+import { Link } from 'react-router-dom'
 
 const FormSection = ({ resumeId }) => {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
-  const [enableNext, setEnableNext] = useState(false)
+  const [enableNext, setEnableNext] = useState(false);
   return (
     <div>
 
@@ -27,7 +28,9 @@ const FormSection = ({ resumeId }) => {
           }
           {
             activeFormIndex === 5 &&
-            <Button className='gap-2' size='sm'>Finish</Button>
+            <Link to={`/my-resume/${resumeId}/view`}>
+              <Button disabled={!enableNext} className='gap-2' size='sm'>Finish</Button>
+            </Link>
           }
 
         </div>
@@ -40,13 +43,13 @@ const FormSection = ({ resumeId }) => {
       {/* Summary */}
       {
         activeFormIndex === 2 &&
-        <Summary enabledNext={(v) => setEnableNext(v)} resumeId={resumeId}  />
+        <Summary enabledNext={(v) => setEnableNext(v)} resumeId={resumeId} />
       }
 
       {/* Education */}
       {
         activeFormIndex === 3 &&
-        <Professional enabledNext={(v) => setEnableNext(v)} resumeId={resumeId}  />
+        <Professional enabledNext={(v) => setEnableNext(v)} resumeId={resumeId} />
       }
 
 
@@ -60,7 +63,7 @@ const FormSection = ({ resumeId }) => {
       {/* Skills */}
       {
         activeFormIndex === 5 &&
-        <Skills resumeId={resumeId} />
+        <Skills resumeId={resumeId} enabledNext={(v) => setEnableNext(v)} />
       }
 
 

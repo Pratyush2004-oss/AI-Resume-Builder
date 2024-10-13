@@ -17,6 +17,6 @@ export const Resume = pgTable('AI-Resume',
         experience: varchar('experience'),
         education: varchar('education'),
         skills: varchar('skills'),
-        themeColor: varchar('themeColor'),
+        themeColor: varchar('themeColor').default('#ff6666'),
     }
 )

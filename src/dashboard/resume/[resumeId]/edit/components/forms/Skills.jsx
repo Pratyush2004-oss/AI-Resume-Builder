@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ResumeInfoContext } from '@/context/ResumeInfoContext';
-import { Loader2 } from 'lucide-react';
+import { Loader2, TreeDeciduousIcon } from 'lucide-react';
 import React, { useContext, useEffect, useState } from 'react'
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css';
@@ -16,7 +16,7 @@ const formFields = {
   rating: 0,
 }
 
-const Skills = ({ resumeId }) => {
+const Skills = ({ resumeId, enabledNext }) => {
   const [skillsList, setSkillsList] = useState([
     formFields
   ])
@@ -52,6 +52,7 @@ const Skills = ({ resumeId }) => {
       if (response) {
         toast.success("Skills Updated Successfully");
         setLoading(false);
+        enabledNext(true);
       }
     } catch (error) {
       toast.error("Error Updating Skills")
@@ -62,6 +63,7 @@ const Skills = ({ resumeId }) => {
   }
 
   useEffect(() => {
+    enabledNext(false);
     resumeInfo && setResumeInfo({
       ...resumeInfo,
       skills: skillsList

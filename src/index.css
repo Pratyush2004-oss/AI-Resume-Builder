@@ -7,17 +7,36 @@
   padding-left: 2em;
 }
 
+@media print {
+  #no-print {
+    display: none;
+  }
+  #print-area {
+    display: block;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 0mm;
+}
+
 .rsw-ce ol {
   list-style: decimal;
   padding-left: 2em;
 }
 
-ul{
+ul {
   list-style-type: disc;
   padding-left: 2em;
 }
 
-ol{
+ol {
   list-style-type: decimal;
   padding-left: 2em;
 }
