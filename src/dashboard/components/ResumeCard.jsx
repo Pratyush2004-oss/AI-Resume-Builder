@@ -48,7 +48,7 @@ const ResumeCard = ({ resume, refreshData }) => {
             <div className='flex justify-end gap-4'>
                 <Link to={`/dashboard/resume/${resume.resumeId}/edit`}><Edit className='p-0.5 text-white bg-purple-500 rounded-md' /></Link>
                 <Link to={`/my-resume/${resume.resumeId}/view`}><Download className='text-white bg-black rounded-md cursor-pointer p-0.5' /></Link>
-                <Trash2 onClick={() => setOpenDialog(true)} className='text-red-500 cursor-pointer' />
+                <Button onClick={() => setOpenDialog(true)}><Trash2 className='text-red-500 cursor-pointer' /></Button>
                 <Dialog open={openDialog}>
                     <DialogContent>
                         <DialogHeader>
