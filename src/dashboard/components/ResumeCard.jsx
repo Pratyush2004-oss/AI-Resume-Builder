@@ -12,7 +12,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@/components/ui/dialog"
-import Logo from '/public/cv.svg'
+import Logo from '/cv.svg'
 import { Button } from '@/components/ui/button'
 const ResumeCard = ({ resume, refreshData }) => {
     const [loading, setLoading] = useState(false);
